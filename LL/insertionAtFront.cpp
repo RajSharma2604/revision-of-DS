@@ -51,6 +51,16 @@ Node *append(int data, Node *head){
     }
     return head;
 }
+int count(Node *head){
+    //this methodwill return number of nodes in the LL
+    Node *temp=head;
+    int count=0;
+    while(temp){
+        count+=1;
+        temp=temp->next;
+    }
+    return count;
+}
 int main()
 {   
     Node *head=NULL;
@@ -70,5 +80,6 @@ int main()
     head=append(2,head);
     
     print(head);
+    cout<<"\nnumber of Nodes :"<<count(head);
 return 0;
 }
