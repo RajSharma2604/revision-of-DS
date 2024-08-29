@@ -20,7 +20,6 @@ Node *push(int data,Node *head){
     else{
         //some nodes are already there.
         Node *p=head;//just to reach at last node.
-        
         while(p->next){
             p=p->next;
         }
@@ -37,33 +36,26 @@ void print(Node *head){
         temp=temp->next;
     }
 }
-int middle(Node *head){
-    Node *slow=head,*fast=head;
-    while(fast && fast->next){
-        slow=slow->next;
-        fast=fast->next->next;
-
+void dataswapping(Node *head){
+    Node *ptr=head;
+    while(ptr&&ptr->next){
+        swap(ptr->data,ptr->next->data);
+        ptr=ptr->next->next;
     }
-    return slow->data;
 }
 int main()
 {   
     Node *head=NULL;
     head=push(5,head);
-   // cout<<"\nfirst insertion: "<<endl;
-   // print(head);
     head=push(10,head);
-    //cout<<"\nsecond insertion: "<<endl;
-   // print(head);
     head=push(15,head);
     head=push(20,head);
     head=push(25,head);
-    head=push(30,head);
-    //cout<<"\nthird insertion: "<<endl;
-    //print(head);
-    
+    //head=push(30,head);
     print(head);
-    int ele=middle(head);
-    cout<<"\nmiddle of LL is :"<<ele<<endl;
+    cout<<"\ncalling pairwise swapping...\n";
+    dataswapping(head);
+    cout<<"\nupdated LL\n:";
+    print(head);
 return 0;
 }
